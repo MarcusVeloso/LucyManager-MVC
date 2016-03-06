@@ -1,2 +1,2 @@
-# LucyManager-MVC
-Reservas de laboratórios, auditórios e equipamentos de informática
+# Lucy Manager MVC
+Reservas de salas, laboratórios, auditórios e equipamentos.
