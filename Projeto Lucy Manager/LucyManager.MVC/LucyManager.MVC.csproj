@@ -184,8 +184,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Equipamentos.cs" />
+    <Compile Include="Models\Eventos.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Locais.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Reservas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
