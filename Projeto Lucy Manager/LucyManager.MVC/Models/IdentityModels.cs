@@ -37,30 +37,51 @@ namespace LucyManager.MVC.Models
         {
         }
 
+        public DbSet<Eventos> Evento { get; set; }
+
+        public DbSet<Locais> Local { get; set; }
+
+        public DbSet<Equipamentos> Equipamento { get; set; }
+
+        public DbSet<Reservas> Reserva { get; set; }        
+
+
         public static LucyManagerDbContext Create()
         {
             return new LucyManagerDbContext();
         }
 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            // Change the name of the table to be Users instead of AspNetUsers
+                        
+            //Muda o nome da tabela de IdentityUser para Usuarios
             modelBuilder.Entity<IdentityUser>()
-                .ToTable("Usuarios");
+                .ToTable("Usuarios")
+                .Property(p => p.Id)
+                .HasColumnName("UsuarioId");
+
             modelBuilder.Entity<ApplicationUser>()
-                .ToTable("Usuarios");
+                .ToTable("Usuarios")
+                .Property(p => p.Id)
+                .HasColumnName("UsuarioId");
+            
+            //Muda o nome da tabela de IdentityRole para Roles
+            modelBuilder.Entity<IdentityRole>()
+                .ToTable("Roles");
+
+            //Muda o nome da tabela de IdentityUserRole para UserRoles
+            modelBuilder.Entity<IdentityUserRole>()
+            .ToTable("UserRoles");
+
+            //Muda o nome da tabela de IdentityUserClaim para UserClaims
+            modelBuilder.Entity<IdentityUserClaim>()
+                .ToTable("UserClaims");
+
+            //Muda o nome da tabela de 
+            modelBuilder.Entity<IdentityUserLogin>()
+            .ToTable("UserLogins");
         }
-
-        public Eventos Evento { get; set; }
-
-        public Locais Local { get; set; }
-
-        public Equipamentos Equipamento { get; set; }
-
-        public Reservas Reserva { get; set; }
-
-        public System.Data.Entity.DbSet<LucyManager.MVC.Models.Eventos> Eventos { get; set; }
     }
 }
