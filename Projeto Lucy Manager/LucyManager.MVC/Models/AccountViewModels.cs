@@ -33,7 +33,7 @@ namespace LucyManager.MVC.Models
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Memorizar esse navegador?")]
+        [Display(Name = "Memorizar no navegador?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -58,7 +58,7 @@ namespace LucyManager.MVC.Models
         [Display(Name = "Senha")]
         public string Password { get; set; }
 
-        [Display(Name = "Me lembrar?")]
+        [Display(Name = "Lembrar")]
         public bool RememberMe { get; set; }
     }
 
