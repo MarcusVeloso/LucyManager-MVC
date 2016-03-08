@@ -3932,7 +3932,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #ffffff;
-  background-color: #428bca;
+  background-color: red;
 }
 
 .nav-stacked > li {
@@ -4501,12 +4501,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
+  background-color: #428bca;
   border-color: #080808;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  color: white;
 }
 
 .navbar-inverse .navbar-brand:hover,
@@ -4520,7 +4520,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  color: white;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
@@ -4544,21 +4544,21 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-toggle {
-  border-color: #333333;
+  border-color: #286090;
 }
 
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
-  background-color: #333333;
+  background-color: #428bca;
 }
 
-.navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #ffffff;
+.navbar-inverse .navbar-toggle .icon-bar {  
+  background-color: #286090;
 }
 
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #101010;
+  border-color: #286090;
 }
 
 .navbar-inverse .navbar-nav > .open > a,
@@ -4933,8 +4933,9 @@ a.list-group-item.active > .badge,
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;
-  color: inherit;
-  background-color: #eeeeee;
+  color: #FFFFFF;
+  opacity: 0.9;
+  background-color: #428bca;
 }
 
 .jumbotron h1 {

@@ -61,5 +61,6 @@ namespace LucyManager.MVC.Models
 
         public Reservas Reserva { get; set; }
 
+        public System.Data.Entity.DbSet<LucyManager.MVC.Models.Eventos> Eventos { get; set; }
     }
 }
