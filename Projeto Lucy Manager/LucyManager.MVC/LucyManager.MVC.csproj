@@ -181,6 +181,7 @@
     <Compile Include="Controllers\EquipamentosController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocaisController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,6 +266,11 @@
     <Content Include="Views\Equipamentos\Details.cshtml" />
     <Content Include="Views\Equipamentos\Edit.cshtml" />
     <Content Include="Views\Equipamentos\Index.cshtml" />
+    <Content Include="Views\Locais\Create.cshtml" />
+    <Content Include="Views\Locais\Delete.cshtml" />
+    <Content Include="Views\Locais\Details.cshtml" />
+    <Content Include="Views\Locais\Edit.cshtml" />
+    <Content Include="Views\Locais\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
