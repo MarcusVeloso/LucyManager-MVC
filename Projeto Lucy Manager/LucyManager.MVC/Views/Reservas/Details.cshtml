@@ -1,0 +1,58 @@
+﻿@model LucyManager.MVC.Models.Reservas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reservas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataInicialReserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataInicialReserva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataFinalReserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataFinalReserva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocalId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocalId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ReservaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
