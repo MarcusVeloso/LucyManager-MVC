@@ -1,0 +1,81 @@
+﻿@model IEnumerable<LucyManager.MVC.Models.Equipamentos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Patrimonio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataAquisicao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataManutencao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataProximaManutencao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocalOrigemId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocalDestinoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patrimonio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataAquisicao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataManutencao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataProximaManutencao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocalOrigemId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocalDestinoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ativo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EquipamentoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EquipamentoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EquipamentoId })
+        </td>
+    </tr>
+}
+
+</table>
