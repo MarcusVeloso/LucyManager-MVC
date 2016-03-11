@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201603080137423_Initial.Designer.cs">
       <DependentUpon>201603080137423_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603110115359_AtualizarReserva.cs" />
+    <Compile Include="Migrations\201603110115359_AtualizarReserva.Designer.cs">
+      <DependentUpon>201603110115359_AtualizarReserva.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Equipamentos.cs" />
@@ -292,6 +296,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603080137423_Initial.resx">
       <DependentUpon>201603080137423_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603110115359_AtualizarReserva.resx">
+      <DependentUpon>201603110115359_AtualizarReserva.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
