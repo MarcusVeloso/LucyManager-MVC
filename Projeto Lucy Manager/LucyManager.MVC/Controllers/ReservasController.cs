@@ -34,6 +34,12 @@ namespace LucyManager.MVC.Controllers
         // GET: Reservas/Create
         public ActionResult Create()
         {
+            ViewBag.UsuarioId = new SelectList(db.Users, "Id", "UserName");
+            
+            ViewBag.LocalId = new SelectList(db.Local, "LocalId", "NomeAbreviado");
+            
+            ViewBag.EventoId = new SelectList(db.Evento, "EventoId", "Descricao");
+            
             return View();
         }
 
