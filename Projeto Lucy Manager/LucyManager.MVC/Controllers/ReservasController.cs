@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using LucyManager.MVC.Models;
+using System.Threading.Tasks;
 
 namespace LucyManager.MVC.Controllers
 {
@@ -11,9 +12,13 @@ namespace LucyManager.MVC.Controllers
         private LucyManagerDbContext db = new LucyManagerDbContext();
 
         // GET: Reservas
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.Reserva.ToList());
+            return View(await db.Reserva
+                .Include(r => r.Local)
+                .Include(r => r.Evento)
+                .Include(r => r.Usuario)
+                .OrderBy(r => r.DataInicialReserva).ToListAsync());
         }
 
         // GET: Reservas/Details/5
@@ -32,30 +37,24 @@ namespace LucyManager.MVC.Controllers
         }
 
         // GET: Reservas/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            ViewBag.UsuarioId = new SelectList(db.Users, "Id", "UserName");
-            
-            ViewBag.LocalId = new SelectList(db.Local, "LocalId", "NomeAbreviado");
-            
-            ViewBag.EventoId = new SelectList(db.Evento, "EventoId", "Descricao");
-            
-            return View();
+            return await BuildView(null);
         }
 
         // POST: Reservas/Create        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReservaId,DataInicialReserva,DataFinalReserva,LocalId,UserId,EventoId")] Reservas reservas)
+        public async Task<ActionResult> Create([Bind(Include = "ReservaId,DataInicialReserva,DataFinalReserva,LocalId,UserId,EventoId")] Reservas reservas)
         {
             if (ModelState.IsValid)
             {
                 db.Reserva.Add(reservas);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(reservas);
+            return await BuildView(reservas);
         }
 
         // GET: Reservas/Edit/5
@@ -111,6 +110,29 @@ namespace LucyManager.MVC.Controllers
             db.Reserva.Remove(reservas);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        private async Task<ActionResult> BuildView(Reservas reservas)
+        {
+            ViewBag.UsuarioId = new SelectList(
+                await db.Users.ToListAsync(),
+                "Id",
+                "UserName",
+                reservas == null ? null : (object)reservas.UserId);
+
+            ViewBag.LocalId = new SelectList(
+                await db.Local.ToListAsync(),
+                "LocalId",
+                "NomeAbreviado",
+                reservas == null ? null : (object)reservas.LocalId);
+
+            ViewBag.EventoId = new SelectList(
+                await db.Evento.ToListAsync(),
+                "EventoId",
+                "Descricao",
+                reservas == null ? null : (object)reservas.EventoId);
+
+            return View(reservas);
         }
 
         protected override void Dispose(bool disposing)
