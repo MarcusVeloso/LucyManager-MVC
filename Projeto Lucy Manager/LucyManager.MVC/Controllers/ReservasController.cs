@@ -58,32 +58,33 @@ namespace LucyManager.MVC.Controllers
         }
 
         // GET: Reservas/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Reservas reservas = db.Reserva.Find(id);
-            if (reservas == null)
+            var reserva = await db.Reserva.FindAsync(id);
+
+            if (reserva == null)
             {
                 return HttpNotFound();
             }
-            return View(reservas);
+
+            return await BuildView(reserva);
         }
 
         // POST: Reservas/Edit/5        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReservaId,DataInicialReserva,DataFinalReserva,LocalId,UserId,EventoId")] Reservas reservas)
+        public async Task<ActionResult> Edit([Bind(Include = "ReservaId,DataInicialReserva,DataFinalReserva,LocalId,UserId,EventoId")] Reservas reservas)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(reservas).State = EntityState.Modified;
-                db.SaveChanges();
+
+                await db.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
-            return View(reservas);
+
+            return await BuildView(reservas);
         }
 
         // GET: Reservas/Delete/5
