@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace LucyManager.MVC.Models
@@ -19,17 +18,18 @@ namespace LucyManager.MVC.Models
 
         [Required]
         [Display(Name = "Local")]
-        public Guid LocalId { get; set; }
-        public List<Locais> ListaLocais { get; set; }
+        public int LocalId { get; set; }
 
         [Required]
         [Display(Name = "Solicitante")]
         public Guid UserId { get; set; }
-        public List<ApplicationUser> ListaUsuarios { get; set; }
 
         [Required]
         [Display(Name = "Evento")]
-        public Guid EventoId { get; set; }
-        public List<Eventos> ListaEventos { get; set; }
+        public int EventoId { get; set; }
+
+        public virtual Locais Local { get; set; }
+        public virtual Eventos Evento { get; set; }
+        public virtual ApplicationUser Usuario { get; set; }
     }
 }
