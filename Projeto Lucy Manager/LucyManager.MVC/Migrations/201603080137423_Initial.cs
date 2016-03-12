@@ -51,9 +51,9 @@ namespace LucyManager.MVC.Migrations
                         ReservaId = c.Int(nullable: false, identity: true),
                         DataInicialReserva = c.DateTime(nullable: false),
                         DataFinalReserva = c.DateTime(nullable: false),
-                        LocalId = c.Guid(nullable: false),
+                        LocalId = c.Int(nullable: false),
                         UserId = c.Guid(nullable: false),
-                        EventoId = c.Guid(nullable: false),
+                        EventoId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ReservaId);
             
@@ -131,7 +131,15 @@ namespace LucyManager.MVC.Migrations
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
                 .ForeignKey("dbo.Usuarios", t => t.IdentityUser_Id)
                 .Index(t => t.IdentityUser_Id);
-            
+
+            AddColumn("dbo.Reservas", "Usuario_Id", c => c.String(maxLength: 128));
+            CreateIndex("dbo.Reservas", "LocalId");
+            CreateIndex("dbo.Reservas", "EventoId");
+            CreateIndex("dbo.Reservas", "Usuario_Id");
+            AddForeignKey("dbo.Reservas", "EventoId", "dbo.Eventos", "EventoId", cascadeDelete: true);
+            AddForeignKey("dbo.Reservas", "LocalId", "dbo.Locais", "LocalId", cascadeDelete: true);
+            AddForeignKey("dbo.Reservas", "Usuario_Id", "dbo.Usuarios", "UsuarioId");
+
         }
         
         public override void Down()
